@@ -20,6 +20,13 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
 
+app.use("/" , (req,res) => {
+  res.json({
+    sucess:true,
+    message: "sucess fully deployed"
+  });
+});
+
 app.use("/api/v1/message",messageRouter);
 
 dbConnection();
