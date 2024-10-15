@@ -1,33 +1,25 @@
 import express from "express";
 import { dbConnection } from "./database/dbConnection.js";
-import dotenv from "dotenv"
-import messageRouter from "./router/messageRouter.js"
-import cors from "cors"
+import dotenv from "dotenv";
+import messageRouter from "./router/messageRouter.js";
+import cors from "cors";
 
-const app=express();
+const app = express();
 
-dotenv.config({path:"./config/config.env"});
+dotenv.config({ path: "./config/config.env" });
 
 app.use(
-    cors({
-      origin: [process.env.FRONTEND_URL],
-      methods: ["POST"],
-      credentials: true,
-    })
-  
+  cors({
+    origin: [process.env.FRONTEND_URL],
+    methods: ["POST"],
+    credentials: true,
+  })
 );
 
 app.use(express.json());
-app.use(express.urlencoded({ extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/" , (req,res) => {
-  res.json({
-    sucess:true,
-    message: "sucess fully deployed"
-  });
-});
-
-app.use("/api/v1/message",messageRouter);
+app.use("/api/v1/message", messageRouter);
 
 dbConnection();
 
