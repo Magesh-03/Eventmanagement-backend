@@ -16,8 +16,8 @@ router.post('/register',(req,res) => {
 })
 
 router.post("/login",(req,res) =>{
-    const{username,password} = req.body;
-    Users.findOne({username:username})
+    const{email,password} = req.body;
+    Users.findOne({email:email})
     .then(user =>{
         if(user){
             if(user.password === password){
