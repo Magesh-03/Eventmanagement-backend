@@ -3,8 +3,12 @@ import { dbConnection } from "./database/dbConnection.js";
 import dotenv from "dotenv";
 import messageRouter from "./router/messageRouter.js";
 import cors from "cors";
-
+import userRoutes from "./router/user.js";
+import bodyParser from 'body-parser'
+import Users from "./models/user.js";
 const app = express();
+
+app.use(express .json());
 
 dotenv.config({ path: "./config/config.env" });
 
@@ -20,6 +24,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/message", messageRouter);
+
+app.use('/users',userRoutes);
+
 
 dbConnection();
 
