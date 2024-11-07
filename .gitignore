@@ -9,7 +9,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Environment variables file
-config.env
+
 
 # Directory for dotenv CLI
 .env.local

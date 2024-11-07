@@ -3,7 +3,7 @@ import validator from 'validator'; // Import validator
 
 const schema = mongoose.Schema;
 
-// Define the user schema
+
 const userSchema = new schema({
   name: {
     type: String,
@@ -22,7 +22,7 @@ const userSchema = new schema({
   }
 });
 
-// Create a model from the schema
+
 const Users = mongoose.model('AppUser', userSchema);
 
 export default Users;

@@ -1,11 +1,32 @@
-import mongoose from "mongoose";
 
-export const dbConnection =()=>{
-    mongoose.connect(process.env.ATLAS_URI,{dbName:"MERN_STACK_EVENT_MESSAGE"})
-    .then(()=>{
-        console.log("Connected to database!");
-    })
-    .catch(err=>{
-        console.log("Some error occured while connecting  to database:",err);
-    });
+
+
+
+ 
+
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+export const dbConnection = async () => {
+  const mongoUri = process.env.MONGO_URI;
+  
+  if (!mongoUri) {
+    console.error('ATLAS_URI is not defined in .env file');
+    process.exit(1); // Exit the process if MONGO_URI is missing
+  }
+
+  try {
+    await mongoose.connect(mongoUri);
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error);
+    process.exit(1);
+  }
 };
+
+
+
+
+
