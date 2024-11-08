@@ -1,9 +1,5 @@
 
 
-
-
- 
-
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
@@ -14,7 +10,7 @@ export const dbConnection = async () => {
   
   if (!mongoUri) {
     console.error('ATLAS_URI is not defined in .env file');
-    process.exit(1); // Exit the process if MONGO_URI is missing
+    process.exit(1); 
   }
 
   try {
