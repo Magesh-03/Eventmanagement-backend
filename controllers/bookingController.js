@@ -10,6 +10,7 @@ export const createBooking = async (req, res) => {
     }
 
     const newBooking = new Booking({
+     
       name,
       email,
       eventDate,
@@ -39,5 +40,13 @@ export const getAllBookings = async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
-
+export const deleteBooking = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Booking.findByIdAndDelete(id);
+    res.json({ message: 'Booking deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete booking' });
+  }
+};
 
